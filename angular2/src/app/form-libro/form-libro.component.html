@@ -1,0 +1,21 @@
+<h5 class="text-primary"><strong>Add Libro</strong></h5>
+<div class="card my-3">
+    <div class="card-body">
+                <form [formGroup]="libroForm" (ngSubmit)="onSubmit()">
+                    <input type="text" formControlName="titolo">
+                    <input type="text" formControlName="editore">
+                    <input type="text" formControlName="autore">
+                    <button type="submit" [disabled]="libroForm.invalid">Salva Libro</button>
+                </form>
+                <p>
+                    {{
+                    libroForm.value | json
+                    }}
+                </p>
+                <p>
+                    {{
+                    libroForm.status
+                    }}
+                </p>
+    </div>
+</div>

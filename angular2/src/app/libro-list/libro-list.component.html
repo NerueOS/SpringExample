@@ -1,0 +1,47 @@
+<h5 class="text-primary"><strong>Libri List</strong></h5>
+<div class="card my-3">
+    <div class="card-body">
+        <input type="text" value="" placeholder="Filtra per Titolo" class="form-control" [(ngModel)]="filteredStringTitolo" />
+        <!-- 
+        <input type="text" value="" placeholder="Filtra per Editore" class="form-control" [(ngModel)]="filteredStringEditore" />
+        <input type="text" value="" placeholder="Filtra per Autore" class="form-control" [(ngModel)]="filteredStringAutore" /> 
+        -->
+        <p class="text-danger">{{ this.errorMessage }}</p>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" >ID 
+                        <span class="frecciaSu" (click)="sortBy('idLibro')"></span> 
+                        <span class="frecciaGiu" (click)="sortBy('idLibroDec')"></span> </th>
+                    <th scope="col" >Titolo 
+                        <span class="frecciaSu" (click)="sortBy('titolo')"></span> 
+                        <span class="frecciaGiu" (click)="sortBy('titoloDec')"></span> </th>
+                    <th scope="col" >Editore 
+                        <span class="frecciaSu" (click)="sortBy('editore')"></span> 
+                        <span class="frecciaGiu" (click)="sortBy('editoreDec')"></span> </th>
+                    <th scope="col" >Autore 
+                        <span class="frecciaSu" (click)="sortBy('autore')"></span> 
+                        <span class="frecciaGiu" (click)="sortBy('autoreDec')"></span> </th>
+                    <th scope="col" >Stato 
+                        <span class="frecciaSu" (click)="sortBy('stato')"></span> 
+                        <span class="frecciaGiu" (click)="sortBy('statoDec')"></span> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let libro of libri | filterTitolo: filteredStringTitolo ">
+                    <td>{{ libro.idLibro }}</td>
+                    <td>{{ libro.titolo }}</td>
+                    <td>{{ libro.editore }}</td>
+                    <td>{{ libro.autore }}</td>
+                    <td>{{ libro.stato }}</td>
+                    
+                    <td>
+                        <button class="btn btn-info" type="button" id="{{libro.idLibro}}"
+                        (click)="removeLibro(libro.idLibro)">Elimina</button>
+                    </td>
+                
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+</div>

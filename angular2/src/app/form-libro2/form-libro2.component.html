@@ -1,0 +1,43 @@
+<h5 class="text-primary"><strong>Add Libro</strong></h5>
+<div class="card my-3">
+  <div class="card-body">
+    <p class="text-danger">{{ this.errorMessage }}</p>
+    <form (ngSubmit)="onSubmit()" #libroForm="ngForm">
+      <div class="form-group">
+        <label for="titolo">Titolo</label>
+        <input type="text" [(ngModel)]="libro.titolo" 
+          class="form-control" 
+          id="titolo" 
+          name="titolo" 
+          placeholder="Enter titolo"
+          required #titolo="ngModel">
+      </div>
+      <div *ngIf="titolo.pristine" class="alert alert-danger">titolo is required</div>
+      
+      <div class="form-group">
+        <label for="editore">Editore</label>
+        <input type="text" [(ngModel)]="libro.editore" 
+          class="form-control" 
+          id="editore" 
+          name="editore" 
+          placeholder="Enter editore"
+          required #editore="ngModel">
+      </div>
+      <div *ngIf="editore.pristine" class="alert alert-danger">editore is required</div>
+      
+      <div class="form-group">
+        <label for="autore">Autore</label>
+        <input type="text" [(ngModel)]="libro.autore" 
+          class="form-control" 
+          id="autore" 
+          name="autore" 
+          placeholder="Enter autore"
+          required #autore="ngModel">
+        <div *ngIf="autore.pristine" class="alert alert-danger">autore is required</div>
+      </div>
+      
+      <button type="submit" [disabled]="!libroForm.form.valid" 
+        class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
